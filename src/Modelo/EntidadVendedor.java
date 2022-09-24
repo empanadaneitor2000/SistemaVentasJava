@@ -8,7 +8,6 @@ public class EntidadVendedor {
     String nom;
     String ape;
     String fechaNacimiento;
-    String cont;
     String doc;
     int estado_idEstado;
     int datos_contacto_idContcto;
@@ -17,13 +16,12 @@ public class EntidadVendedor {
     public EntidadVendedor() {
     }
 
-    public EntidadVendedor(int idU, String img, String nom, String ape, String fechaNacimiento, String cont, String doc, int estado_idEstado, int datos_contacto_idContcto, int tipo_documento_idDocumento) {
+    public EntidadVendedor(int idU, String img, String nom, String ape, String fechaNacimiento, String doc, int estado_idEstado, int datos_contacto_idContcto, int tipo_documento_idDocumento) {
         this.idU = idU;
         this.img = img;
         this.nom = nom;
         this.ape = ape;
-        this.fechaNacimiento = fechaNacimiento;
-        this.cont = cont;
+        this.fechaNacimiento = fechaNacimiento;      
         this.doc = doc;
         this.estado_idEstado = estado_idEstado;
         this.datos_contacto_idContcto = datos_contacto_idContcto;
@@ -70,13 +68,7 @@ public class EntidadVendedor {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getCont() {
-        return cont;
-    }
 
-    public void setCont(String cont) {
-        this.cont = cont;
-    }
 
     public String getDoc() {
         return doc;

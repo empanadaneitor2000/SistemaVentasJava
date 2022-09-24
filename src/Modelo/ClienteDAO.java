@@ -28,11 +28,10 @@ public class ClienteDAO implements CRUD{
                c.setImagen(rs.getString(3));
                c.setApellidos(rs.getString(4));
                c.setFechaNacimiento(rs.getString(5));
-               c.setContrasena(rs.getString(6));
-               c.setDocumento(rs.getInt(7));
-               c.setEstado_idEstado(rs.getInt(8));
-               c.setDatos_contacto_idContacto(rs.getInt(9));
-               c.setTipo_documento_idDocumento(rs.getInt(10));
+               c.setDocumento(rs.getInt(6));
+               c.setEstado_idEstado(rs.getInt(7));
+               c.setDatos_contacto_idContacto(rs.getInt(8));
+               c.setTipo_documento_idDocumento(rs.getInt(9));
                lista.add(c);
             }
         } catch (Exception e){  
@@ -43,7 +42,7 @@ public class ClienteDAO implements CRUD{
     @Override
     public int add(Object[] o) {
         int r=0;
-       String sql = "insert into usuario(idUsuario,imagen,nombres,apellidos.fechaNacimiento,contrasena,documento,estado_idEstado,datos_contacto_idContacto,tipo_documento_idDocumento)values(?,?,?,?,?,?,?,?,?,?)";
+       String sql = "insert into usuario(idUsuario,imagen,nombres,apellidos.fechaNacimiento,documento,estado_idEstado,datos_contacto_idContacto,tipo_documento_idDocumento)values(?,?,?,?,?,?,?,?,?)";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
@@ -56,7 +55,7 @@ public class ClienteDAO implements CRUD{
             ps.setObject(7, o[6]);
             ps.setObject(8, o[7]);
             ps.setObject(9, o[8]);
-            ps.setObject(10, o[9]);
+            
             r=ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -66,7 +65,7 @@ public class ClienteDAO implements CRUD{
     @Override
     public int actualizar(Object[] o) {
         int r=0;
-        String sql = "update usuario set imagen=?,nombres=?,apellidos=?.fechaNacimiento=?,contrasena=?,documento,estado_idEstado=?,datos_contacto_idContacto=?,tipo_documento_idDocumento=? where idUsuario=?";
+        String sql = "update usuario set imagen=?,nombres=?,apellidos=?.fechaNacimiento=?,documento=?,estado_idEstado=?,datos_contacto_idContacto=?,tipo_documento_idDocumento=? where idUsuario=?";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
@@ -79,7 +78,7 @@ public class ClienteDAO implements CRUD{
             ps.setObject(7, o[6]);
             ps.setObject(8, o[7]);
             ps.setObject(9, o[8]);
-            ps.setObject(10, o[9]);
+            
             r=ps.executeUpdate();
         } catch (Exception e) {
         }
