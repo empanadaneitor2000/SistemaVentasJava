@@ -101,16 +101,5 @@ public class EntidadVendedor {
     public void setTipo_documento_idDocumento(int tipo_documento_idDocumento) {
         this.tipo_documento_idDocumento = tipo_documento_idDocumento;
     }
-    
-    
-    
-    
-    
-
-   
-   
-
-   
-    
-    
+  
 }
