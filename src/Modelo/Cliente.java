@@ -1,4 +1,3 @@
-
 package Modelo;
 
 
@@ -8,7 +7,6 @@ public class Cliente {
     String nombres;
     String apellidos;
     String fechaNacimiento;
-    String contrasena;
     int documento;
     int estado_idEstado;
     int datos_contacto_idContacto;
@@ -17,12 +15,11 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int idUsuario, String imagen, String nombres, String fechaNacimiento, String contrasena, int documento, int estado_idEstado, int datos_contacto_idContacto, int tipo_documento_idDocumento) {
+    public Cliente(int idUsuario, String imagen, String nombres, String fechaNacimiento, int documento, int estado_idEstado, int datos_contacto_idContacto, int tipo_documento_idDocumento) {
         this.idUsuario = idUsuario;
         this.imagen = imagen;
         this.nombres = nombres;
         this.fechaNacimiento = fechaNacimiento;
-        this.contrasena = contrasena;
         this.documento = documento;
         this.estado_idEstado = estado_idEstado;
         this.datos_contacto_idContacto = datos_contacto_idContacto;
@@ -69,14 +66,6 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
     public int getDocumento() {
         return documento;
     }
@@ -107,6 +96,10 @@ public class Cliente {
 
     public void setTipo_documento_idDocumento(int tipo_documento_idDocumento) {
         this.tipo_documento_idDocumento = tipo_documento_idDocumento;
+    }
+
+    public Object getDni() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

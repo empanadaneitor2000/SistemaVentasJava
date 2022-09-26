@@ -10,6 +10,7 @@ public class menu extends javax.swing.JFrame {
     
     public menu() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     
@@ -213,6 +214,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JDesktopPane ventanaprincipal;
+    public static javax.swing.JDesktopPane ventanaprincipal;
     // End of variables declaration//GEN-END:variables
 }

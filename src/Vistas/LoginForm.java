@@ -14,8 +14,8 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
         this.setLocationRelativeTo(null);
-        user.setText("1109223332" );
-        pass.setText("vsantana212");
+        user.setText("Pepe");
+        pass.setText("12312323" );
     }
 
    
@@ -82,15 +82,15 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userActionPerformed
     public void validar(){
-        String doc=user.getText();
-        String cont=pass.getText();
+        String nombres=user.getText();
+        String doc =pass.getText();
         
         if (user.getText().equals("")  ||  pass.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "INGRESE DATOS");
             user.requestFocus();
         }else{
-            ev=vdao.Validarvendedor(doc, cont);
-            if (ev.getDoc()!= null && ev.getCont()!=null) {
+            ev=vdao.Validarvendedor(doc, nombres);
+            if (ev.getDoc()!= null && ev.getNom()!=null) {
                 menu p = new menu();
                 p.setVisible(true);
                 dispose();
