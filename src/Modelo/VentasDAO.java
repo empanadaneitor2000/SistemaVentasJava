@@ -12,9 +12,10 @@ public class VentasDAO implements CRUD{
     PreparedStatement ps;
     ResultSet rs;
 
-    public List listarTablaVenta() {
-        List<Ventas> lista =new ArrayList<>();
-        String sql="select * from ventas";
+   @Override
+    public List listar() {
+        List<Ventas> lista3 =new ArrayList<>();
+        String sql="select * from venta";
         try{
           con = cn.Conectar();
           ps = con.prepareStatement(sql);
@@ -26,18 +27,18 @@ public class VentasDAO implements CRUD{
                c.settotal(rs.getInt(3));
                c.setmetodo_pago_idMetodo(rs.getInt(4));
                c.setperfil_idPerfil(rs.getInt(5));
-               lista.add(c);
+               lista3.add(c);
             }
         } catch (Exception e){  
         }
-        return lista;
+        return lista3;    
     }
 
 
     @Override
     public int actualizar(Object[] o) {
         int r=0;
-        String sql = "update ventas set fecha=?,total=?,metodo_pago_idMetodo=?,perfil_idPerfil=?, where idVenta=?";
+        String sql = "update venta set fecha=?,total=?,metodo_pago_idMetodo=?,perfil_idPerfil=?, where idVenta=?";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
@@ -52,11 +53,7 @@ public class VentasDAO implements CRUD{
         return r;
     }
 
-    @Override
-    public List listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public int add(Object[] o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

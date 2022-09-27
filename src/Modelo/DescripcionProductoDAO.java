@@ -12,9 +12,31 @@ public class DescripcionProductoDAO implements CRUD{
     PreparedStatement ps;
     ResultSet rs;
     
-    public List listarTablaDescripcionProducto() {
-        List<DescripcionProducto> lista =new ArrayList<>();
-        String sql="select * from descripcionproducto";
+    //buscador
+     public DescripcionProducto listartitulo(String titulo){
+        DescripcionProducto dp = new DescripcionProducto();
+        String sql = "select * from descripcion_producto where titulo=?";     
+        try {
+            con=cn.Conectar();
+            ps=con.prepareStatement(sql);
+            ps.setString(1, titulo);
+            rs=ps.executeQuery();
+            while (rs.next()) {    
+                dp.setIdDescripcion(rs.getInt(1));
+               dp.setTitulo(rs.getString(2));
+               dp.setDescripcion(rs.getString(3));
+               dp.setRequisitosMinimos(rs.getString(4));
+               dp.setRequisitosRecomendados(rs.getString(5));
+     
+            }
+        } catch (Exception e) {  
+        }
+         return dp;
+    }
+    @Override
+    public List listar() {
+        List<DescripcionProducto> lista2 =new ArrayList<>();
+        String sql="select * from descripcion_producto";
         try{
           con = cn.Conectar();
           ps = con.prepareStatement(sql);
@@ -22,20 +44,21 @@ public class DescripcionProductoDAO implements CRUD{
             while (rs.next()) {
                 DescripcionProducto c = new DescripcionProducto();
                c.setIdDescripcion(rs.getInt(1));
-               c.setTitulo(rs.getInt(2));
-               c.setDescripcion(rs.getInt(3));
-               c.setRequisitosMinimos(rs.getInt(4));
-               c.setRequisitosRecomendados(rs.getInt(5));
+               c.setTitulo(rs.getString(2));
+               c.setDescripcion(rs.getString(3));
+               c.setRequisitosMinimos(rs.getString(4));
+               c.setRequisitosRecomendados(rs.getString(5));
+               lista2.add(c);
             }
         } catch (Exception e){  
         }
-        return lista;
+        return lista2;
+    
     }
-
     @Override
     public int actualizar(Object[] o) {
         int r=0;
-        String sql = "update descripcionproducto set titulo=?,descripcion=?,requisitosMinimos=?,requisitosRecomendados=? where idDescripcion=?";
+        String sql = "update descripcion_producto set titulo=?,descripcion=?,requisitosMinimos=?,requisitosRecomendados=? where idDescripcion=?";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
@@ -50,10 +73,7 @@ public class DescripcionProductoDAO implements CRUD{
         return r;
     }
 
-    @Override
-    public List listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public int add(Object[] o) {

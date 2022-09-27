@@ -4,15 +4,15 @@ package Modelo;
 
 public class DescripcionProducto {
     int idDescripcion;
-    int titulo;
-    int descripcion;
-    int requisitosMinimos;
-    int requisitosRecomendados;
+    String titulo;
+    String descripcion;
+    String requisitosMinimos;
+    String requisitosRecomendados;
     
     public DescripcionProducto () {
         }
 
-    public DescripcionProducto(int idDescripcion, int titulo, int descripcion, int requisitosMinimos, int requisitosRecomendados) {
+    public DescripcionProducto(int idDescripcion, String titulo, String descripcion, String requisitosMinimos, String requisitosRecomendados) {
         this.idDescripcion = idDescripcion;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -28,35 +28,35 @@ public class DescripcionProducto {
         this.idDescripcion = idDescripcion;
     }
 
-    public int getTitulo() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(int titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public int getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(int descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public int getRequisitosMinimos() {
+    public String getRequisitosMinimos() {
         return requisitosMinimos;
     }
 
-    public void setRequisitosMinimos(int requisitosMinimos) {
+    public void setRequisitosMinimos(String requisitosMinimos) {
         this.requisitosMinimos = requisitosMinimos;
     }
 
-    public int getRequisitosRecomendados() {
+    public String getRequisitosRecomendados() {
         return requisitosRecomendados;
     }
 
-    public void setRequisitosRecomendados(int requisitosRecomendados) {
+    public void setRequisitosRecomendados(String requisitosRecomendados) {
         this.requisitosRecomendados = requisitosRecomendados;
     }
     

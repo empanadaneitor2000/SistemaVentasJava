@@ -27,6 +27,7 @@ public class menu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
 
@@ -40,7 +41,7 @@ public class menu extends javax.swing.JFrame {
         );
         ventanaprincipalLayout.setVerticalGroup(
             ventanaprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(94, 114, 228));
@@ -99,6 +100,13 @@ public class menu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem5);
 
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem7);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/reporte.png"))); // NOI18N
@@ -138,7 +146,7 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        System.exit(0);
+       
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -149,7 +157,7 @@ public class menu extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
        Productosform pf = new Productosform();
-        CentrarVentana(pf);
+        AcomodarVentana(pf);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -161,13 +169,25 @@ public class menu extends javax.swing.JFrame {
         Ventasform vf = new Ventasform();
         CentrarVentana(vf);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
     void CentrarVentana(JInternalFrame frame){
         ventanaprincipal.add(frame);
         Dimension dimension = ventanaprincipal.getSize();
         Dimension Dframe = frame.getSize();
-        frame.setLocation((dimension.width-Dframe.height)/2, (dimension.height-Dframe.width)/2);
+        frame.setLocation((dimension.width-Dframe.height)/2 , (dimension.height-Dframe.width)/2);
         frame.show();
     }
+     void AcomodarVentana(JInternalFrame frame){
+        ventanaprincipal.add(frame);
+        Dimension dimension = ventanaprincipal.getSize();
+        Dimension Dframe = frame.getSize();
+        frame.setLocation((dimension.width-Dframe.height)/2 , (dimension.height-Dframe.width/2));
+        frame.show();
+    }
+   
     /**
      * @param args the command line arguments
      */
@@ -214,6 +234,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     public static javax.swing.JDesktopPane ventanaprincipal;
     // End of variables declaration//GEN-END:variables
 }
