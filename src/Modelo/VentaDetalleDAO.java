@@ -12,31 +12,38 @@ public class VentaDetalleDAO implements CRUD{
     PreparedStatement ps;
     ResultSet rs;
     
+    /*
      public List listarTablaDetalleVenta() {
-        List<VentaDetalle> lista =new ArrayList<>();
-        String sql="select * from ventadetalle";
-        try{
-          con = cn.Conectar();
-          ps = con.prepareStatement(sql);
-          rs= ps.executeQuery();
-            while (rs.next()) {
-                VentaDetalle c = new VentaDetalle();
-               c.setidDetalle(rs.getInt(1));
-               c.setventa_idVenta(rs.getInt(2));
-               c.setproducto_idProducto(rs.getInt(3));
-               c.setcantidad(rs.getInt(4));
-               c.settotal(rs.getInt(5));
-            }
-        } catch (Exception e){  
-        }
-        return lista;
+       int cx=tupu;
     }
 
+*/ public VentaDetalle listarID(int idDetalle){
+        VentaDetalle c = new VentaDetalle();
+        String sql = "select * from venta_detalle where idDetalle=?";
+        try {
+            con=cn.Conectar();
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idDetalle);
+            rs=ps.executeQuery();
+            while (rs.next()) {    
+                c.setIdDetalle(rs.getInt(1));
+                c.setVenta_idVenta(rs.getInt(2));
+                c.setProducto_idProducto(rs.getInt(3));
+                c.setCantidad(rs.getInt(4));
+                c.setTotal(rs.getInt(5));
+                
+     
+            }
+        } catch (Exception e) {  
+        }
+         return c;
+    }
 
+    
     @Override
     public int actualizar(Object[] o) {
         int r=0;
-        String sql = "update ventadetalle set venta_idVenta=?,producto_idProducto=?,cantidad=?,total=? where idDetalle=?";
+        String sql = "update venta_detalle set venta_idVenta=?,producto_idProducto=?,cantidad=?,total=? where idDetalle=?";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
@@ -53,7 +60,24 @@ public class VentaDetalleDAO implements CRUD{
 
     @Override
     public List listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+         List<VentaDetalle> lista =new ArrayList<>();
+        String sql="select * from venta_detalle";
+        try{
+          con = cn.Conectar();
+          ps = con.prepareStatement(sql);
+          rs= ps.executeQuery();
+            while (rs.next()) {
+                VentaDetalle c = new VentaDetalle();
+               c.setIdDetalle(rs.getInt(1));
+               c.setVenta_idVenta(rs.getInt(2));
+               c.setProducto_idProducto(rs.getInt(3));
+               c.setCantidad(rs.getInt(4));
+               c.setTotal(rs.getInt(5));
+            }
+        } catch (Exception e){  
+        }
+        return lista; 
     }
 
     @Override
@@ -65,5 +89,8 @@ public class VentaDetalleDAO implements CRUD{
     public void eliminar(int idUsuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    }
 
-}
+
+  
+    

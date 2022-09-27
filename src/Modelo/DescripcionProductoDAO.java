@@ -13,6 +13,26 @@ public class DescripcionProductoDAO implements CRUD{
     ResultSet rs;
     
     //buscador
+    public DescripcionProducto listarIDP(int IdDescripcion){
+        DescripcionProducto dps = new DescripcionProducto();
+        String sql = "select * from descripcion_producto where IdDescripcion=?";     
+        try {
+            con=cn.Conectar();
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, IdDescripcion);
+            rs=ps.executeQuery();
+            while (rs.next()) {    
+                dps.setIdDescripcion(rs.getInt(1));
+               dps.setTitulo(rs.getString(2));
+               dps.setDescripcion(rs.getString(3));
+               dps.setRequisitosMinimos(rs.getString(4));
+               dps.setRequisitosRecomendados(rs.getString(5));
+     
+            }
+        } catch (Exception e) {  
+        }
+         return dps;
+    }
      public DescripcionProducto listartitulo(String titulo){
         DescripcionProducto dp = new DescripcionProducto();
         String sql = "select * from descripcion_producto where titulo=?";     

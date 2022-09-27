@@ -1,5 +1,7 @@
 
 package Vistas;
+import Modelo.VentaDetalle;
+import Modelo.VentaDetalleDAO;
 import Modelo.Ventas;
 import Modelo.VentasDAO;
 import java.util.List;
@@ -12,6 +14,8 @@ public class Ventasform extends javax.swing.JInternalFrame {
     Ventas vs = new Ventas();
     DefaultTableModel modelo3 = new DefaultTableModel();
     
+    VentaDetalleDAO dao4 = new VentaDetalleDAO();
+    VentaDetalle vds = new VentaDetalle();
     public Ventasform() {
         initComponents();
            listar();
@@ -30,7 +34,22 @@ public class Ventasform extends javax.swing.JInternalFrame {
             modelo3.addRow(vt);
         }
             tablaventas.setModel(modelo3);
-   
+            
+        List <VentaDetalle> lista = dao3.listar();
+        modelo3=(DefaultTableModel)TablaDetalleVenta.getModel();
+        Object[]o = new Object[5];
+        for (int i = 0; i < lista.size(); i++) {
+            o[0]=lista.get(i).getIdDetalle();
+            o[1]=lista.get(i).getVenta_idVenta();
+            o[2]=lista.get(i).getProducto_idProducto();
+            o[3]=lista.get(i).getCantidad();
+            o[4]=lista.get(i).getTotal();   
+            
+            modelo3.addRow(o);
+        }
+            TablaDetalleVenta.setModel(modelo3);
+            
+            
     }
     public static void main(String args[]) {
         
@@ -48,15 +67,15 @@ public class Ventasform extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtCodVenta = new javax.swing.JLabel();
-        btnCodVenta = new javax.swing.JTextField();
-        btnBuscarCliente = new javax.swing.JButton();
+        txtventaid = new javax.swing.JTextField();
+        btnventa = new javax.swing.JButton();
         txtFechaVenta = new javax.swing.JLabel();
-        btnFecha = new javax.swing.JTextField();
-        btnTotal = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         txtTotalVenta = new javax.swing.JLabel();
-        btnMetodoPago = new javax.swing.JTextField();
+        txtmp = new javax.swing.JTextField();
         txtDetalleVenta = new javax.swing.JLabel();
-        btnPerfil = new javax.swing.JTextField();
+        txtPerfil = new javax.swing.JTextField();
         txtMetodoPago = new javax.swing.JLabel();
         txtPerfilVenta = new javax.swing.JLabel();
         btnDetalle = new javax.swing.JTextField();
@@ -77,18 +96,24 @@ public class Ventasform extends javax.swing.JInternalFrame {
 
         txtCodVenta.setText("COD.VENTA:");
 
-        btnBuscarCliente.setText("Buscar");
-        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtventaid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarClienteActionPerformed(evt);
+                txtventaidActionPerformed(evt);
+            }
+        });
+
+        btnventa.setText("Buscar");
+        btnventa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnventaActionPerformed(evt);
             }
         });
 
         txtFechaVenta.setText("FECHA:");
 
-        btnFecha.addActionListener(new java.awt.event.ActionListener() {
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFechaActionPerformed(evt);
+                txtFechaActionPerformed(evt);
             }
         });
 
@@ -96,9 +121,9 @@ public class Ventasform extends javax.swing.JInternalFrame {
 
         txtDetalleVenta.setText("ID DETALLE:");
 
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+        txtPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
+                txtPerfilActionPerformed(evt);
             }
         });
 
@@ -128,19 +153,19 @@ public class Ventasform extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtCodVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCodVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtventaid, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtFechaVenta)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtMetodoPago)
                                 .addComponent(txtTotalVenta))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtmp, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(txtPerfilVenta))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -158,7 +183,7 @@ public class Ventasform extends javax.swing.JInternalFrame {
                             .addComponent(btnIdVenta)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscarCliente)))
+                        .addComponent(btnventa)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -167,30 +192,30 @@ public class Ventasform extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodVenta)
-                    .addComponent(btnCodVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCliente))
+                    .addComponent(txtventaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnventa))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFechaVenta)
-                    .addComponent(btnFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDetalleVenta)
                     .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTotalVenta)
-                    .addComponent(btnTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdVenta)
                     .addComponent(btnIdVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMetodoPago)
-                    .addComponent(btnMetodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtProductoVenta)
                     .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPerfilVenta)
-                    .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCantidadVenta)
                     .addComponent(btnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -265,36 +290,56 @@ public class Ventasform extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-       // buscarVentas();
-    }//GEN-LAST:event_btnBuscarClienteActionPerformed
+    private void btnventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnventaActionPerformed
+        BuscarVenta();
+    }//GEN-LAST:event_btnventaActionPerformed
 
-    private void btnFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFechaActionPerformed
+    void BuscarVenta() {
+        
+          String cod = txtventaid.getText();
+        int cod2=Integer.parseInt(cod);
+        if(txtventaid.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Debe ingrear cod producto");
+        }else{
+            Ventas Ventas=dao3.listarIDV(cod2);
+            if (Integer.toString(Ventas.getIdVenta())!= null) {
+                txtFecha.setText(Ventas.getFecha());
+               txtTotal.setText(Integer.toString(Ventas.getTotal()));
+                txtmp.setText(Integer.toString(Ventas.getMetodo_pago_idMetodo()));
+                txtPerfil.setText(Integer.toString(Ventas.getPerfil_idPerfil()));
+                System.err.println("Error");
+            }else{
+               JOptionPane.showMessageDialog(this, "Producto no registrado");
+                
+            }
+        }
+    }
+            
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnFechaActionPerformed
+    }//GEN-LAST:event_txtFechaActionPerformed
 
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+    private void txtPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPerfilActionPerformed
+    }//GEN-LAST:event_txtPerfilActionPerformed
 
     private void btnDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDetalleActionPerformed
+
+    private void txtventaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtventaidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtventaidActionPerformed
   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaDetalleVenta;
-    private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JTextField btnCantidad;
-    private javax.swing.JTextField btnCodVenta;
     private javax.swing.JTextField btnDetalle;
-    private javax.swing.JTextField btnFecha;
     private javax.swing.JTextField btnIdVenta;
-    private javax.swing.JTextField btnMetodoPago;
-    private javax.swing.JTextField btnPerfil;
     private javax.swing.JTextField btnProducto;
-    private javax.swing.JTextField btnTotal;
+    private javax.swing.JButton btnventa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -304,12 +349,17 @@ public class Ventasform extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtCantidadVenta;
     private javax.swing.JLabel txtCodVenta;
     private javax.swing.JLabel txtDetalleVenta;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JLabel txtFechaVenta;
     private javax.swing.JLabel txtIdVenta;
     private javax.swing.JLabel txtMetodoPago;
+    private javax.swing.JTextField txtPerfil;
     private javax.swing.JLabel txtPerfilVenta;
     private javax.swing.JLabel txtProductoVenta;
+    private javax.swing.JTextField txtTotal;
     private javax.swing.JLabel txtTotalVenta;
+    private javax.swing.JTextField txtmp;
+    private javax.swing.JTextField txtventaid;
     // End of variables declaration//GEN-END:variables
 
     private void buscarVenta() {

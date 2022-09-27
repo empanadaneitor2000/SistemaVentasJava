@@ -12,6 +12,29 @@ public class VentasDAO implements CRUD{
     PreparedStatement ps;
     ResultSet rs;
 
+    
+    public Ventas listarIDV(int idVenta){
+        Ventas c = new Ventas();
+        String sql = "select * from venta where idVenta=?";
+        try {
+            con=cn.Conectar();
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idVenta);
+            rs=ps.executeQuery();
+            while (rs.next()) {    
+                c.setIdVenta(rs.getInt(1));
+                c.setFecha(rs.getString(2));
+                c.setTotal(rs.getInt(3));
+                c.setMetodo_pago_idMetodo(rs.getInt(4));
+                c.setMetodo_pago_idMetodo(rs.getInt(4));
+                c.setTotal(rs.getInt(5));
+                
+     
+            }
+        } catch (Exception e) {  
+        }
+         return c;
+    }
    @Override
     public List listar() {
         List<Ventas> lista3 =new ArrayList<>();
@@ -22,11 +45,11 @@ public class VentasDAO implements CRUD{
           rs= ps.executeQuery();
             while (rs.next()) {
                 Ventas c = new Ventas();
-               c.setidVenta(rs.getInt(1));
-               c.setfecha(rs.getString(2));
-               c.settotal(rs.getInt(3));
-               c.setmetodo_pago_idMetodo(rs.getInt(4));
-               c.setperfil_idPerfil(rs.getInt(5));
+               c.setIdVenta(rs.getInt(1));
+               c.setFecha(rs.getString(2));
+               c.setTotal(rs.getInt(3));
+               c.setMetodo_pago_idMetodo(rs.getInt(4));
+               c.setPerfil_idPerfil(rs.getInt(5));
                lista3.add(c);
             }
         } catch (Exception e){  
@@ -64,8 +87,6 @@ public class VentasDAO implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Ventas listaridVenta(String cod) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
    
 }

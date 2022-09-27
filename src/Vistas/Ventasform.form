@@ -59,11 +59,11 @@
                       <Group type="102" attributes="0">
                           <Component id="txtCodVenta" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnCodVenta" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="txtventaid" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Component id="txtFechaVenta" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="btnFecha" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="txtFecha" min="-2" pref="100" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtMetodoPago" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -71,9 +71,9 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnTotal" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <Component id="btnMetodoPago" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="btnPerfil" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="txtTotal" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="txtmp" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="txtPerfil" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -98,7 +98,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnBuscarCliente" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnventa" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -111,34 +111,34 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtCodVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCodVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtventaid" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnventa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtFechaVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtDetalleVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnDetalle" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtTotalVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtIdVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnIdVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtMetodoPago" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMetodoPago" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtmp" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtProductoVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtPerfilVenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCantidadVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -153,14 +153,17 @@
             <Property name="text" type="java.lang.String" value="COD.VENTA:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="btnCodVenta">
+        <Component class="javax.swing.JTextField" name="txtventaid">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtventaidActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnBuscarCliente">
+        <Component class="javax.swing.JButton" name="btnventa">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarClienteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnventaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="txtFechaVenta">
@@ -168,28 +171,28 @@
             <Property name="text" type="java.lang.String" value="FECHA:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="btnFecha">
+        <Component class="javax.swing.JTextField" name="txtFecha">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFechaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFechaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="btnTotal">
+        <Component class="javax.swing.JTextField" name="txtTotal">
         </Component>
         <Component class="javax.swing.JLabel" name="txtTotalVenta">
           <Properties>
             <Property name="text" type="java.lang.String" value="TOTAL:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="btnMetodoPago">
+        <Component class="javax.swing.JTextField" name="txtmp">
         </Component>
         <Component class="javax.swing.JLabel" name="txtDetalleVenta">
           <Properties>
             <Property name="text" type="java.lang.String" value="ID DETALLE:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="btnPerfil">
+        <Component class="javax.swing.JTextField" name="txtPerfil">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPerfilActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPerfilActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="txtMetodoPago">

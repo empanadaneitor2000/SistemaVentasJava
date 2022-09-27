@@ -124,6 +124,9 @@ public class Productosform extends javax.swing.JInternalFrame {
         txtiddescripcion = new javax.swing.JTextField();
         txtvalor = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btniddescrip = new javax.swing.JButton();
+        txtcoddescripcion = new javax.swing.JTextField();
 
         setTitle("Formulario Productos");
         setAlignmentX(0.0F);
@@ -214,6 +217,15 @@ public class Productosform extends javax.swing.JInternalFrame {
 
         txtDescripcion.setText("DESCRIPCION:");
 
+        jLabel6.setText("ID-DESCRIPCION");
+
+        btniddescrip.setText("Buscar");
+        btniddescrip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btniddescripActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -245,16 +257,24 @@ public class Productosform extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtIdDescripcion)
-                                .addGap(18, 18, 18)
-                                .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscarDescripcion)
-                                .addGap(34, 34, 34)
-                                .addComponent(btnActualizarDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtDescripcion)
-                            .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtIdDescripcion)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnBuscarDescripcion)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtcoddescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btniddescrip))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(124, 124, 124)
+                                    .addComponent(btnActualizarDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,24 +334,31 @@ public class Productosform extends javax.swing.JInternalFrame {
                     .addComponent(txtIdDescripcion)
                     .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarDescripcion)
-                    .addComponent(btnActualizarDescripcion))
+                    .addComponent(jLabel6)
+                    .addComponent(btniddescrip)
+                    .addComponent(txtcoddescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtDescripcion)
                 .addGap(20, 20, 20)
-                .addComponent(txtdescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtreqmin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtreqrecm, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtdescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtreqmin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtreqrecm, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnActualizarDescripcion)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -364,6 +391,10 @@ public class Productosform extends javax.swing.JInternalFrame {
     private void txtreqminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtreqminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtreqminActionPerformed
+
+    private void btniddescripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniddescripActionPerformed
+        BuscarDescripcion();
+    }//GEN-LAST:event_btniddescripActionPerformed
      
     void BuscarProducto(){
         
@@ -404,6 +435,25 @@ public class Productosform extends javax.swing.JInternalFrame {
             }
         }
     }
+     void BuscarDescripcion(){
+        
+        String cod = txtcoddescripcion.getText();
+        int cod2=Integer.parseInt(cod);
+        if(txtcoddescripcion.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Debe ingrear cod descripcion");
+        }else{
+            DescripcionProducto DescripcionProducto=dao2.listarIDP(cod2); 
+            if (Integer.toString(DescripcionProducto.getIdDescripcion())!= null) {
+               txtdescripcion.setText(DescripcionProducto.getDescripcion());
+                txtreqmin.setText(DescripcionProducto.getRequisitosMinimos());
+                txtreqrecm.setText(DescripcionProducto.getRequisitosRecomendados());
+                txttitulo.setText(DescripcionProducto.getTitulo());
+            }else{
+               JOptionPane.showMessageDialog(this, "Producto no registrado");
+                
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaProducto;
@@ -411,11 +461,13 @@ public class Productosform extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizarProducto;
     private javax.swing.JButton btnBuscarDescripcion;
     private javax.swing.JButton btnBuscarProducto;
+    private javax.swing.JButton btniddescrip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabladescripcion;
@@ -424,6 +476,7 @@ public class Productosform extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtIdProducto;
     private javax.swing.JLabel txtProducto;
     private javax.swing.JTextField txtcant;
+    private javax.swing.JTextField txtcoddescripcion;
     private javax.swing.JTextField txtcodproducto;
     private javax.swing.JTextField txtdescripcion;
     private javax.swing.JTextField txtiddescripcion;

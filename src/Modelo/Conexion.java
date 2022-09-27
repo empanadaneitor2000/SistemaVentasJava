@@ -18,6 +18,7 @@ public class Conexion {
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto-formativo","root","");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error");
+
         }
         return con;
     }
@@ -39,3 +40,4 @@ public class Conexion {
         }
     }
 }
+
