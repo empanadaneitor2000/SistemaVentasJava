@@ -35,19 +35,7 @@ public class Ventasform extends javax.swing.JInternalFrame {
         }
             tablaventas.setModel(modelo3);
             
-        List <VentaDetalle> lista = dao3.listar();
-        modelo3=(DefaultTableModel)TablaDetalleVenta.getModel();
-        Object[]o = new Object[5];
-        for (int i = 0; i < lista.size(); i++) {
-            o[0]=lista.get(i).getIdDetalle();
-            o[1]=lista.get(i).getVenta_idVenta();
-            o[2]=lista.get(i).getProducto_idProducto();
-            o[3]=lista.get(i).getCantidad();
-            o[4]=lista.get(i).getTotal();   
-            
-            modelo3.addRow(o);
-        }
-            TablaDetalleVenta.setModel(modelo3);
+       
             
             
     }
@@ -307,7 +295,7 @@ public class Ventasform extends javax.swing.JInternalFrame {
                txtTotal.setText(Integer.toString(Ventas.getTotal()));
                 txtmp.setText(Integer.toString(Ventas.getMetodo_pago_idMetodo()));
                 txtPerfil.setText(Integer.toString(Ventas.getPerfil_idPerfil()));
-                System.err.println("Error");
+                
             }else{
                JOptionPane.showMessageDialog(this, "Producto no registrado");
                 

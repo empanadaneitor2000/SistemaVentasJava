@@ -1,21 +1,22 @@
 
 package Vistas;
 
-import Modelo.EntidadVendedor;
-import Modelo.VendedorDAO;
+import Bcrypt.BCrypt;
+import Modelo.LoginValidar;
+import Modelo.LoginValidarDAO;
+
 import javax.swing.JOptionPane;
 
 
 public class LoginForm extends javax.swing.JFrame {
 
-    VendedorDAO vdao =new VendedorDAO();
-    EntidadVendedor ev =new EntidadVendedor();
+    LoginValidarDAO vdao =new LoginValidarDAO();
+    LoginValidar ev =new LoginValidar();
     
     public LoginForm() {
         initComponents();
         this.setLocationRelativeTo(null);
-        user.setText("Pepe");
-        pass.setText("12312323" );
+       
     }
 
    
@@ -126,8 +127,8 @@ public class LoginForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "INGRESE DATOS");
             user.requestFocus();
         }else{
-            ev=vdao.Validarvendedor(doc, nombres);
-            if (ev.getDoc()!= null && ev.getNom()!=null) {
+            ev=vdao.Validar(nombres, doc);
+            if (ev.getEmail()!= null && ev.getPassword()!=null) {
                 menu p = new menu();
                 p.setVisible(true);
                 dispose();

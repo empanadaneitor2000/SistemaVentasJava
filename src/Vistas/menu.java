@@ -92,7 +92,7 @@ public class menu extends javax.swing.JFrame {
         jMenu3.add(jMenuItem4);
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/empleado.png"))); // NOI18N
-        jMenuItem5.setText("Empleado");
+        jMenuItem5.setText("Empleados y Roles");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
