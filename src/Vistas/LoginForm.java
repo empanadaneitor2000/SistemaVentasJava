@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class LoginForm extends javax.swing.JFrame {
 
     LoginValidarDAO vdao =new LoginValidarDAO();
-    LoginValidar ev =new LoginValidar();
+    LoginValidar lv =new LoginValidar();
     
     public LoginForm() {
         initComponents();
@@ -120,15 +120,21 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userActionPerformed
     public void validar(){
-        String nombres=user.getText();
-        String doc =pass.getText();
-        
+        String email=user.getText();
+        String password =pass.getText();
+          System.out.println(lv.getPassword());
+       if (BCrypt.checkpw(password,lv.getPassword() )){
+        System.out.println("It matches");
+       }else{
+        System.out.println("It does not match");
+       }
+        /*
         if (user.getText().equals("")  ||  pass.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "INGRESE DATOS");
             user.requestFocus();
         }else{
-            ev=vdao.Validar(nombres, doc);
-            if (ev.getEmail()!= null && ev.getPassword()!=null) {
+            lv=vdao.Validar(email, password);
+            if (lv.getEmail()!= null && lv.getPassword() !=null) {
                 menu p = new menu();
                 p.setVisible(true);
                 dispose();
@@ -137,7 +143,9 @@ public class LoginForm extends javax.swing.JFrame {
                 user.requestFocus();
             }
         }
+                */
     }
+    
     
     public static void main(String argsc[]) {
       

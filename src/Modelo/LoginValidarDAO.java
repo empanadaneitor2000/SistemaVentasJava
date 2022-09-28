@@ -30,7 +30,7 @@ public class LoginValidarDAO {
                lv.setCiudad_idCiudad(rs.getInt(5));
                lv.setPassword(rs.getString(6));
               
-               
+               System.out.println(lv.getPassword());
             }
             
         } catch (Exception e) {

@@ -16,7 +16,13 @@ public class ProductoDAO implements CRUD{
     //esto seria el buscador 
     public Producto listarID(int idProducto){
         Producto c = new Producto();
-        String sql = "select * from producto where idProducto=?";
+        //String sql = "select * from producto where idProducto=?";
+        String sql = "SELECT idProducto,imagen,valor,cantidad,linea,sublinea,nombrePerfil,titulo"
+                        + "FROM producto INNER JOIN linea USING(linea_idLinea)"    
+                        + "INNER JOIN sublinea USING(sublinea_idSublinea"
+                        + "INNER JOIN perfil USING(perfil_idPerfil)"
+                        + "INNER JOIN descripcion_producto USING(descripcion_producto_idDescripcion)"
+                        + "where idProducto=?";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);

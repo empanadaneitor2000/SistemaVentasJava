@@ -71,13 +71,12 @@ public class LoginValidar {
     }
 
     public String getPassword() {
-        return password;
+     return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
-        
-        
+    
 
 }
