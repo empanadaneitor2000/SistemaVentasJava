@@ -113,16 +113,11 @@ public class ClienteDAO implements CRUD{
     }
 
     @Override
-    public void eliminar(int idUsuario) {
-        String sql = "delete from usuario where idUsuario=?";
-        try {
-            con=cn.Conectar();
-            ps=con.prepareStatement(sql);
-            ps.setInt(1, idUsuario);
-            ps.executeUpdate();
-        } catch (Exception e) {
-        }
+    public void eliminar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
     
     
 }

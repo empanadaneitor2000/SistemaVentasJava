@@ -125,17 +125,7 @@ public class ProductoDAO implements CRUD{
         return r;
     }
 
-    @Override
-    public void eliminar(int idProducto) {
-         String sql = "delete from producto where idProducto=?";
-        try {
-            con=cn.Conectar();
-            ps=con.prepareStatement(sql);
-            ps.setInt(1, idProducto);
-            ps.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
+   
 /*
     @Override
     public List listar() {
@@ -145,6 +135,11 @@ public class ProductoDAO implements CRUD{
 
     @Override
     public List listar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    

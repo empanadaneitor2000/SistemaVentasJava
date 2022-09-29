@@ -101,8 +101,10 @@ public class DescripcionProductoDAO implements CRUD{
     }
 
     @Override
-    public void eliminar(int idUsuario) {
+    public void eliminar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
    
 }
