@@ -4,6 +4,7 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,8 @@ public class ProductoDAO implements CRUD{
     PreparedStatement ps;
     ResultSet rs;
     
-    //esto seria el buscador 
+    //esto seria el buscador corregir luego
+    /*
     public Producto listarID(int idProducto){
         Producto c = new Producto();
         String sql = "select * from producto where idProducto=?";
@@ -38,7 +40,7 @@ public class ProductoDAO implements CRUD{
         }
          return c;
     }
-
+*/
     @Override
     public int actualizar(Object[] o) {
         int r=0;
@@ -61,10 +63,11 @@ public class ProductoDAO implements CRUD{
         return r;
     }
 
-/*    @Override
+    @Override
     public List listar() {
-      
-        String sql="SELECT idProducto,imagen,valor,cantidad,linea,sublinea,descripcion_producto_idDescripcion,"
+      List<Producto> lista =new ArrayList<>();
+        String sql="SELECT "
+                + "idProducto,imagen,valor,cantidad,linea,sublinea,descripcion_producto_idDescripcion,"
                 + "titulo,descripcion,requisitosMinimos,requisitosRecomendados\n" +
 "		\n" +
 "		FROM ((((producto \n" +
@@ -72,36 +75,34 @@ public class ProductoDAO implements CRUD{
 "		INNER JOIN sublinea ON producto.sublinea_idSublinea = sublinea.idSublinea)\n" +
 "		INNER JOIN perfil ON producto.perfil_idPerfil = perfil.idPerfil )\n" +
 "        RIGHT JOIN descripcion_producto ON producto.descripcion_producto_idDescripcion = descripcion_producto.idDescripcion)"
-                + "where idProducto=?;"
-                
-                ;
-        String data[] = new String [11];
+                + "where idProducto=?;";
+        
         try{
           con = cn.Conectar();
           ps = con.prepareStatement(sql);
           rs= ps.executeQuery();
             while (rs.next()) {
-               data[0]= rs.getString("idProducto");
-               data[1]= rs.getString("imagen");
-               data[2]= rs.getString("valor");
-               data[3]= rs.getString("cantidad");
-               data[4]= rs.getString("linea");
-               data[5]= rs.getString("sublinea");
-               data[6]= rs.getString("descripcion_producto_idDescripcion");
-               data[7]= rs.getString("titulo");
-               data[8]= rs.getString("descripcion");
-               data[9]= rs.getString("requisitosMinimos");
-               data[10]= rs.getString("requisitosRecomendados");
-              
-               
+               Producto pd = new Producto();
+               pd.setIdProducto(rs.getInt(1));
+               pd.setImagen(rs.getString(2));
+               pd.setValor(rs.getInt(3));
+               pd.setCantidad(rs.getInt(4));
+               pd.setLinea(rs.getString(5));
+               pd.setSublinea(rs.getString(6));
+               pd.setDescripcion_producto_idDescripcion(rs.getInt(7));
+               pd.setTitulo(rs.getString(8));
+               pd.setDescripcion(rs.getString(9));
+               pd.setRequisitosMinimos(rs.getString(10));
+               pd.setRequisitosRecomendados(rs.getString(11));
+               lista.add(pd);
             }
         } catch (Exception e){  
         }
          
-        return ;
+        return lista;
     } 
     
-    */
+    
     @Override
     public int add(Object[] o) {
         int r=0;
@@ -132,12 +133,6 @@ public class ProductoDAO implements CRUD{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 */
-
-    @Override
-    public List listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public void eliminar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

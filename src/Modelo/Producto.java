@@ -7,23 +7,29 @@ public class Producto {
     String imagen;
     int valor;
     int cantidad;
-    int linea_idLinea;
-    int sublinea_idSublinea;
-    int perfil_idPerfil;
+    String linea;
+    String sublinea; 
     int descripcion_producto_idDescripcion;
+    String titulo;
+    String descripcion;
+    String requisitosMinimos;
+    String requisitosRecomendados;
 
     public Producto() {
     }
 
-    public Producto(int idProducto, String imagen, int valor, int cantidad, int linea_idLinea ,int sublinea_idSublinea, int perfil_idPerfil, int descripcion_producto_idDescripcion) {
+    public Producto(int idProducto, String imagen, int valor, int cantidad, String linea, String sublinea, int descripcion_producto_idDescripcion, String titulo, String descripcion, String requisitosMinimos, String requisitosRecomendados) {
         this.idProducto = idProducto;
         this.imagen = imagen;
         this.valor = valor;
         this.cantidad = cantidad;
-        this.linea_idLinea = linea_idLinea;
-        this.sublinea_idSublinea = sublinea_idSublinea;
-        this.perfil_idPerfil = perfil_idPerfil;
+        this.linea = linea;
+        this.sublinea = sublinea;
         this.descripcion_producto_idDescripcion = descripcion_producto_idDescripcion;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.requisitosMinimos = requisitosMinimos;
+        this.requisitosRecomendados = requisitosRecomendados;
     }
 
     public int getIdProducto() {
@@ -58,38 +64,63 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public int getlinea_idLinea() {
-        return linea_idLinea;
+    public String getLinea() {
+        return linea;
     }
 
-    public void setlinea_idLinea(int linea_idLinea) {
-        this.linea_idLinea = linea_idLinea;
+    public void setLinea(String linea) {
+        this.linea = linea;
     }
 
-    public int getsublinea_idSublinea() {
-        return sublinea_idSublinea;
+    public String getSublinea() {
+        return sublinea;
     }
 
-    public void setsublinea_idSublinea(int sublinea_idSublinea) {
-        this.sublinea_idSublinea = sublinea_idSublinea;
+    public void setSublinea(String sublinea) {
+        this.sublinea = sublinea;
     }
 
-    public int getperfil_idPerfil() {
-        return perfil_idPerfil;
-    }
-
-    public void setperfil_idPerfil(int perfil_idPerfil) {
-        this.perfil_idPerfil = perfil_idPerfil;
-    }
-
-    public int getdescripcion_producto_idDescripcion() {
+    public int getDescripcion_producto_idDescripcion() {
         return descripcion_producto_idDescripcion;
     }
 
-    public void setdescripcion_producto_idDescripcion(int descripcion_producto_idDescripcion) {
-        this.descripcion_producto_idDescripcion= descripcion_producto_idDescripcion;
+    public void setDescripcion_producto_idDescripcion(int descripcion_producto_idDescripcion) {
+        this.descripcion_producto_idDescripcion = descripcion_producto_idDescripcion;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getRequisitosMinimos() {
+        return requisitosMinimos;
+    }
+
+    public void setRequisitosMinimos(String requisitosMinimos) {
+        this.requisitosMinimos = requisitosMinimos;
+    }
+
+    public String getRequisitosRecomendados() {
+        return requisitosRecomendados;
+    }
+
+    public void setRequisitosRecomendados(String requisitosRecomendados) {
+        this.requisitosRecomendados = requisitosRecomendados;
+    }
     
+
+   
     
 }

@@ -120,20 +120,22 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userActionPerformed
     public void validar(){
-        String email=user.getText();
-        String password =pass.getText();
-          System.out.println(lv.getPassword());
-       if (BCrypt.checkpw(password,lv.getPassword() )){
+        String email=user.getText();//traemos los datos del textfiel del form
+        String password =pass.getText();// traemos los datos del textfiel del form
+          //System.out.println(lv.getPassword());
+        
+                    // aca usamos el checkpw de la documentacion de bcrypt pero no imprime ni pasa
+       if (BCrypt.checkpw(password,lv.getPassword() )){  
         System.out.println("It matches");
        }else{
         System.out.println("It does not match");
        }
-        /*
+                    //metodo de autentificacion del login
         if (user.getText().equals("")  ||  pass.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "INGRESE DATOS");
             user.requestFocus();
         }else{
-            lv=vdao.Validar(email, password);
+            lv=vdao.Validar(email, password); //instaciamos el loginDAO y el modelo loginvalidar donde estan los contructores
             if (lv.getEmail()!= null && lv.getPassword() !=null) {
                 menu p = new menu();
                 p.setVisible(true);
@@ -143,7 +145,7 @@ public class LoginForm extends javax.swing.JFrame {
                 user.requestFocus();
             }
         }
-                */
+                
     }
     
     
