@@ -31,9 +31,7 @@ public class Conexion {
             st=cn.con.createStatement();
             rs=st.executeQuery("select * from usuario");
             while (rs.next()) {                
-                System.out.println(rs.getInt("idUsuario")+" "+ rs.getString("imagen")+" "+ rs.getString("nombres")+" "+ rs.getString("apellidos")+" "+ rs.getString("fechaNacimiento"));
-            //idUsuario,imagen,nombres,apellidos.fechaNacimiento,contrasena,documento,estado_idEstado,datos_contacto_idContacto,tipo_documento_idDocumento
-            }
+                }
             
             cn.con.close();
         } catch (Exception e) {

@@ -21,7 +21,7 @@ public class Clientesform extends javax.swing.JInternalFrame {
     void listar(){
         List <Cliente> lista = dao.listar();
         modelo=(DefaultTableModel)tabla.getModel();
-        Object[]ob = new Object[9];
+        Object[]ob = new Object[8];
         for (int i = 0; i < lista.size(); i++) {
             ob[0]=lista.get(i).getIdUsuario();
             ob[1]=lista.get(i).getImagen();
@@ -30,8 +30,8 @@ public class Clientesform extends javax.swing.JInternalFrame {
             ob[4]=lista.get(i).getFechaNacimiento();   
             ob[5]=lista.get(i).getDocumento();
             ob[6]=lista.get(i).getEstado_idEstado();
-            ob[7]=lista.get(i).getDatos_contacto_idContacto();
-            ob[8]=lista.get(i).getTipo_documento_idDocumento();
+            
+            ob[7]=lista.get(i).getTipo_documento_idDocumento();
             modelo.addRow(ob);
         }
             tabla.setModel(modelo);
@@ -141,7 +141,7 @@ public class Clientesform extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "id", "imagen", "Nombres", "Apellidos", "Fecha de nacimiento", "Documento", "Estado", "Datos idcontacto", "Tipo de documento"
+                "id", "Nombres", "ima", "Apellidos", "Fecha de nacimiento", "Documento", "Estado", "Tipo de documento"
             }
         ));
         jScrollPane1.setViewportView(tabla);
@@ -170,7 +170,7 @@ public class Clientesform extends javax.swing.JInternalFrame {
                     .addComponent(txtapellido, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btnnew, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,9 +211,9 @@ public class Clientesform extends javax.swing.JInternalFrame {
                                         .addComponent(btnupd))
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,8 +270,8 @@ public class Clientesform extends javax.swing.JInternalFrame {
                         .addComponent(txttipodoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8))
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

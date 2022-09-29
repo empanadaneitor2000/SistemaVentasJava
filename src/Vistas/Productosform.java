@@ -1,32 +1,48 @@
 
 package Vistas;
 
+import Modelo.Conexion;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import Modelo.DescripcionProducto;
 import Modelo.DescripcionProductoDAO;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Productosform extends javax.swing.JInternalFrame {
- ProductoDAO dao = new ProductoDAO();
-    Producto cl = new Producto();
-    DefaultTableModel modelo = new DefaultTableModel();
-    
-    
- DescripcionProductoDAO dao2 = new DescripcionProductoDAO();
+            ProductoDAO dao = new ProductoDAO();
+            Producto cl = new Producto();
+        DescripcionProductoDAO dao2 = new DescripcionProductoDAO();
         DescripcionProducto dp = new DescripcionProducto();
-        
         DefaultTableModel modelo2 = new DefaultTableModel();
+   
+        
+        
+         Connection con;
+         Conexion cn = new Conexion();
+         PreparedStatement ps;
+         ResultSet rs;
+         Statement st;
+         DefaultTableModel modelo ;
         
     public Productosform() {
          initComponents();
-           listar();
+           //listar();
+           consultar();
     }
+ 
+    
+    
+    //buscador pero 
     void listar(){
+       /*
         List <Producto> lista = dao.listar();
-        modelo=(DefaultTableModel)TablaProducto.getModel();
+       
         Object[]ob = new Object[9];
         for (int i = 0; i < lista.size(); i++) {
             ob[0]=lista.get(i).getIdProducto();
@@ -40,8 +56,8 @@ public class Productosform extends javax.swing.JInternalFrame {
             
             modelo.addRow(ob);
             }
-        
-            TablaProducto.setModel(modelo);
+        tabla.setModel(modelo);
+        */    
             
         List <DescripcionProducto> lista2 = dao2.listar();
         modelo2=(DefaultTableModel)tabladescripcion.getModel();
@@ -91,7 +107,49 @@ public class Productosform extends javax.swing.JInternalFrame {
             new menu().setVisible(true);
         });
     }
-
+        //busqueda trayendo 
+      void consultar(){
+        String sql="SELECT idProducto,imagen,valor,cantidad,linea,sublinea,nombrePerfil,descripcion_producto_idDescripcion,"
+                + "titulo,descripcion,requisitosMinimos,requisitosRecomendados\n" +
+"		\n" +
+"		FROM ((((producto \n" +
+"                 INNER JOIN linea ON producto.linea_idLinea=linea.idLinea )\n" +
+"		INNER JOIN sublinea ON producto.sublinea_idSublinea = sublinea.idSublinea)\n" +
+"		INNER JOIN perfil ON producto.perfil_idPerfil = perfil.idPerfil )\n" +
+"        RIGHT JOIN descripcion_producto ON producto.descripcion_producto_idDescripcion = descripcion_producto.idDescripcion)"
+                + "where idProducto=?";
+        
+        try {
+    
+           con=cn.Conectar();
+           st = con.createStatement();
+           rs=st.executeQuery(sql);
+            System.err.println(rs);
+           Object[] data = new Object[12];
+            modelo=(DefaultTableModel)tabla.getModel();
+            while (rs.next()) {
+               data[0]= rs.getInt("idProducto");
+               data[1]= rs.getString("imagen");
+               data[2]= rs.getInt("valor");
+               data[3]= rs.getInt("cantidad");
+               data[4]= rs.getString("linea");
+               data[5]= rs.getString("sublinea");
+               data[6] = rs.getString("nombrePerfil");
+               data[7]= rs.getInt("descripcion_producto_idDescripcion");
+               data[8]= rs.getString("titulo");
+               data[9]= rs.getString("descripcion");
+               data[10]= rs.getString("requisitosMinimos");
+               data[11]= rs.getString("requisitosRecomendados");
+               
+               modelo.addRow(data);
+               
+            
+            }
+             tabla.setModel(modelo);
+             System.out.println(modelo);
+         }catch (Exception e) {   
+        }
+    }
     
     @SuppressWarnings("unchecked")
     
@@ -104,7 +162,7 @@ public class Productosform extends javax.swing.JInternalFrame {
         txtimagen = new javax.swing.JTextField();
         txtProducto = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaProducto = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         txtdescripcion = new javax.swing.JTextField();
         txttitulo = new javax.swing.JTextField();
         txtreqrecm = new javax.swing.JTextField();
@@ -150,15 +208,15 @@ public class Productosform extends javax.swing.JInternalFrame {
 
         txtProducto.setText("ID-DESCRIPCION");
 
-        TablaProducto.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "IDPRODUCTO", "IMAGEN", "VALOR", "CANTIDAD", "IDLINEA", "IDSUBLINEA", "IDPERFIL", "IDDESCRIPCION"
+                "IDPRODUCTO", "IMAGEN", "VALOR", "CANTIDAD", "IDLINEA", "IDSUBLINEA", "iddesscrip", "IDPERFIL", "TITULO", "DESCRIPCION", "REQUISITOSMIN", "REQUISITOSRECO"
             }
         ));
-        jScrollPane1.setViewportView(TablaProducto);
+        jScrollPane1.setViewportView(tabla);
 
         txtdescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,8 +310,8 @@ public class Productosform extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtreqrecm, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +354,7 @@ public class Productosform extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addGap(30, 30, 30)
                                 .addComponent(txtimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,7 +400,7 @@ public class Productosform extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtdescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addComponent(txtdescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -456,7 +514,6 @@ public class Productosform extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaProducto;
     private javax.swing.JButton btnActualizarDescripcion;
     private javax.swing.JButton btnActualizarProducto;
     private javax.swing.JButton btnBuscarDescripcion;
@@ -470,6 +527,7 @@ public class Productosform extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tabla;
     private javax.swing.JTable tabladescripcion;
     private javax.swing.JLabel txtDescripcion;
     private javax.swing.JLabel txtIdDescripcion;

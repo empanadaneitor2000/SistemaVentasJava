@@ -4,7 +4,7 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProductoDAO implements CRUD{
@@ -16,13 +16,8 @@ public class ProductoDAO implements CRUD{
     //esto seria el buscador 
     public Producto listarID(int idProducto){
         Producto c = new Producto();
-        //String sql = "select * from producto where idProducto=?";
-        String sql = "SELECT idProducto,imagen,valor,cantidad,linea,sublinea,nombrePerfil,titulo"
-                        + "FROM producto INNER JOIN linea USING(linea_idLinea)"    
-                        + "INNER JOIN sublinea USING(sublinea_idSublinea"
-                        + "INNER JOIN perfil USING(perfil_idPerfil)"
-                        + "INNER JOIN descripcion_producto USING(descripcion_producto_idDescripcion)"
-                        + "where idProducto=?";
+        String sql = "select * from producto where idProducto=?";
+       
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
@@ -66,31 +61,47 @@ public class ProductoDAO implements CRUD{
         return r;
     }
 
-    @Override
+/*    @Override
     public List listar() {
-      List<Producto> lista =new ArrayList<>();
-        String sql="select * from producto";
+      
+        String sql="SELECT idProducto,imagen,valor,cantidad,linea,sublinea,descripcion_producto_idDescripcion,"
+                + "titulo,descripcion,requisitosMinimos,requisitosRecomendados\n" +
+"		\n" +
+"		FROM ((((producto \n" +
+"                 INNER JOIN linea ON producto.linea_idLinea=linea.idLinea )\n" +
+"		INNER JOIN sublinea ON producto.sublinea_idSublinea = sublinea.idSublinea)\n" +
+"		INNER JOIN perfil ON producto.perfil_idPerfil = perfil.idPerfil )\n" +
+"        RIGHT JOIN descripcion_producto ON producto.descripcion_producto_idDescripcion = descripcion_producto.idDescripcion)"
+                + "where idProducto=?;"
+                
+                ;
+        String data[] = new String [11];
         try{
           con = cn.Conectar();
           ps = con.prepareStatement(sql);
           rs= ps.executeQuery();
             while (rs.next()) {
-                Producto c = new Producto();
-               c.setIdProducto(rs.getInt(1));
-               c.setImagen(rs.getString(2));
-               c.setValor(rs.getInt(3));
-               c.setCantidad(rs.getInt(4));
-               c.setlinea_idLinea(rs.getInt(5));
-               c.setsublinea_idSublinea(rs.getInt(6));
-               c.setperfil_idPerfil(rs.getInt(7));
-               c.setdescripcion_producto_idDescripcion(rs.getInt(8));
-               lista.add(c);
+               data[0]= rs.getString("idProducto");
+               data[1]= rs.getString("imagen");
+               data[2]= rs.getString("valor");
+               data[3]= rs.getString("cantidad");
+               data[4]= rs.getString("linea");
+               data[5]= rs.getString("sublinea");
+               data[6]= rs.getString("descripcion_producto_idDescripcion");
+               data[7]= rs.getString("titulo");
+               data[8]= rs.getString("descripcion");
+               data[9]= rs.getString("requisitosMinimos");
+               data[10]= rs.getString("requisitosRecomendados");
+              
+               
             }
         } catch (Exception e){  
         }
-        return lista;
-    }
-
+         
+        return ;
+    } 
+    
+    */
     @Override
     public int add(Object[] o) {
         int r=0;
@@ -125,4 +136,18 @@ public class ProductoDAO implements CRUD{
         } catch (Exception e) {
         }
     }
+/*
+    @Override
+    public List listar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+*/
+
+    @Override
+    public List listar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+    
+   
 }
