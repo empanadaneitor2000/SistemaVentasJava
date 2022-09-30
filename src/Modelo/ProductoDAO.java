@@ -15,10 +15,19 @@ public class ProductoDAO implements CRUD{
     ResultSet rs;
     
     //esto seria el buscador corregir luego
-    /*
+    
     public Producto listarID(int idProducto){
-        Producto c = new Producto();
-        String sql = "select * from producto where idProducto=?";
+        Producto pd = new Producto();
+        String sql = "SELECT "
+                + "idProducto,imagen,valor,cantidad,linea,sublinea,descripcion_producto_idDescripcion,"
+                + "titulo,descripcion,requisitosMinimos,requisitosRecomendados\n" +
+"		\n" +
+"		FROM ((((producto \n" +
+"                 INNER JOIN linea ON producto.linea_idLinea=linea.idLinea )\n" +
+"		INNER JOIN sublinea ON producto.sublinea_idSublinea = sublinea.idSublinea)\n" +
+"		INNER JOIN perfil ON producto.perfil_idPerfil = perfil.idPerfil )\n" +
+"        RIGHT JOIN descripcion_producto ON producto.descripcion_producto_idDescripcion = descripcion_producto.idDescripcion)"
+                + "WHERE idProducto=?;";
        
         try {
             con=cn.Conectar();
@@ -26,21 +35,24 @@ public class ProductoDAO implements CRUD{
             ps.setInt(1, idProducto);
             rs=ps.executeQuery();
             while (rs.next()) {    
-                c.setIdProducto(rs.getInt(1));
-                c.setImagen(rs.getString(2));
-                c.setValor(rs.getInt(3));
-                c.setCantidad(rs.getInt(4));
-                c.setlinea_idLinea(rs.getInt(5));
-                c.setsublinea_idSublinea(rs.getInt(6));
-                c.setperfil_idPerfil(rs.getInt(7));
-                c.setdescripcion_producto_idDescripcion(rs.getInt(8));
+                pd.setIdProducto(rs.getInt(1));
+                pd.setImagen(rs.getString(2));
+                pd.setValor(rs.getInt(3));
+                pd.setCantidad(rs.getInt(4));
+                pd.setLinea(rs.getString(5));
+                pd.setSublinea(rs.getString(6));
+                pd.setDescripcion_producto_idDescripcion(rs.getInt(7));
+                pd.setTitulo(rs.getString(8));
+                pd.setDescripcion(rs.getString(9));
+                pd.setRequisitosMinimos(rs.getString(10));
+                pd.setRequisitosRecomendados(rs.getString(11));
      
             }
         } catch (Exception e) {  
         }
-         return c;
+         return pd;
     }
-*/
+
     @Override
     public int actualizar(Object[] o) {
         int r=0;
@@ -74,8 +86,7 @@ public class ProductoDAO implements CRUD{
 "                 INNER JOIN linea ON producto.linea_idLinea=linea.idLinea )\n" +
 "		INNER JOIN sublinea ON producto.sublinea_idSublinea = sublinea.idSublinea)\n" +
 "		INNER JOIN perfil ON producto.perfil_idPerfil = perfil.idPerfil )\n" +
-"        RIGHT JOIN descripcion_producto ON producto.descripcion_producto_idDescripcion = descripcion_producto.idDescripcion)"
-                + "where idProducto=?;";
+"        RIGHT JOIN descripcion_producto ON producto.descripcion_producto_idDescripcion = descripcion_producto.idDescripcion);";
         
         try{
           con = cn.Conectar();
