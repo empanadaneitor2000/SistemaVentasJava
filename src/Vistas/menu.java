@@ -156,7 +156,7 @@ public class menu extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
        Productosform pf = new Productosform();
-        AcomodarVentana(pf);
+       AcomodarVentana(pf);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -183,7 +183,7 @@ public class menu extends javax.swing.JFrame {
         ventanaprincipal.add(frame);
         Dimension dimension = ventanaprincipal.getSize();
         Dimension Dframe = frame.getSize();
-        frame.setLocation((dimension.width-Dframe.height)/2 , (dimension.height-Dframe.width/2));
+        frame.setLocation((dimension.width-Dframe.height)/4 , (dimension.height-Dframe.width/3));
         frame.show();
     }
    
